@@ -1,0 +1,70 @@
+\ustcsetup{
+  title              = {实时以太网POWERLINK在加速器控制系统中的应用研究},
+  title*             = {Application and Research of Ethernet POWERLINK in Accelerator Control System},
+  author             = {孙晓康},
+  author*            = {Xiaokang Sun},
+  speciality         = {核科学与技术},
+  speciality*        = {Nuclear Science and Technology},
+  supervisor         = {刘功发 教授级高工},
+  supervisor*        = {Prof. Gongfa Liu},
+  % date               = {2017-05-01},  % 默认为今日
+  % professional-type  = {专业学位类型},
+  % professional-type* = {Professional degree type},
+  % secret-level       = {秘密},     % 绝密|机密|秘密，注释本行则不保密
+  % secret-level*      = {Secret},  % Top secret|Highly secret|Secret
+  % secret-year        = {10},      % 保密年限
+}
+
+
+% 加载宏包
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{siunitx}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{diagbox}
+
+% 数学命令
+\input{math-commands.tex}
+
+% 配置图片的默认目录
+\graphicspath{{figures/}}
+
+% 用于写文档的命令
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+\DeclareRobustCommand\pkg{\textsf}
+\DeclareRobustCommand\file{\nolinkurl}
+
+
+% hyperref 宏包在最后调用
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage{listings}
+\lstset{
+  columns=fixed,       
+  numbers=left,                                        % 在左侧显示行号
+  numberstyle=\tiny\color{gray},                       % 设定行号格式
+  frame=none,                                          % 不显示背景边框
+  backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+  keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+  numberstyle=\footnotesize\color{darkgray},           
+  commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+  %  stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+  stringstyle=\ttfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+  showstringspaces=false,                              % 不显示字符串中的空格
+  language=python,                                       % 设置语言
+  basicstyle=\footnotesize\ttfamily,
+}
+\usepackage{xcolor}
+
+\usepackage{verbatim}
+\usepackage{subfigure} 
+\usepackage{multirow}
+\usepackage{emptypage}
+%\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{float}

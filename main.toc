@@ -1,0 +1,101 @@
+\contentsline {chapter}{\numberline {第1章\hspace {.3em}}绪论}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}课题研究背景}{1}{section.1.1}% 
+\contentsline {subsection}{\numberline {1.1.1}加速器控制系统简介}{1}{subsection.1.1.1}% 
+\contentsline {subsection}{\numberline {1.1.2}实时性分类}{3}{subsection.1.1.2}% 
+\contentsline {subsection}{\numberline {1.1.3}加速器控制系统中的实时性需求}{4}{subsection.1.1.3}% 
+\contentsline {section}{\numberline {1.2}国内外研究现状}{5}{section.1.2}% 
+\contentsline {subsection}{\numberline {1.2.1}基于POWERLINK的ALBA设备保护系统}{5}{subsection.1.2.1}% 
+\contentsline {subsection}{\numberline {1.2.2}CERN在辐射区域关于POWERLINK的应用研究}{6}{subsection.1.2.2}% 
+\contentsline {subsection}{\numberline {1.2.3}上海光源的光束线前端真空泄漏快保护系统}{8}{subsection.1.2.3}% 
+\contentsline {section}{\numberline {1.3}论文工作的主要内容及创新点}{8}{section.1.3}% 
+\contentsline {chapter}{\numberline {第2章\hspace {.3em}}POWERLINK通信协议研究}{10}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}实时以太网介绍}{10}{section.2.1}% 
+\contentsline {subsubsection}{\numberline {1}Ethernet POWERLINK}{11}{subsubsection.2.1.0.1}% 
+\contentsline {subsubsection}{\numberline {2}PROFINET}{11}{subsubsection.2.1.0.2}% 
+\contentsline {subsubsection}{\numberline {3}EtherCAT}{11}{subsubsection.2.1.0.3}% 
+\contentsline {subsubsection}{\numberline {4}SERCOS III}{12}{subsubsection.2.1.0.4}% 
+\contentsline {subsubsection}{\numberline {5}EtherNet/IP}{12}{subsubsection.2.1.0.5}% 
+\contentsline {section}{\numberline {2.2}POWERLINK协议介绍}{12}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}POWERLINK协议的基本特性}{12}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}POWERLINK协议的网络模型}{14}{subsection.2.2.2}% 
+\contentsline {section}{\numberline {2.3}POWERLINK协议的实现}{17}{section.2.3}% 
+\contentsline {subsection}{\numberline {2.3.1}基于Linux系统实现POWERLINK协议}{19}{subsection.2.3.1}% 
+\contentsline {subsection}{\numberline {2.3.2}基于FPGA实现POWERLINK协议}{20}{subsection.2.3.2}% 
+\contentsline {subsection}{\numberline {2.3.3}测试小结}{26}{subsection.2.3.3}% 
+\contentsline {section}{\numberline {2.4}POWERLINK通信周期的理论计算}{27}{section.2.4}% 
+\contentsline {section}{\numberline {2.5}POWERLINK通信协议的仿真模拟}{29}{section.2.5}% 
+\contentsline {subsection}{\numberline {2.5.1}OMNeT++仿真器}{29}{subsection.2.5.1}% 
+\contentsline {subsection}{\numberline {2.5.2}POWERLINK通信节点建模}{31}{subsection.2.5.2}% 
+\contentsline {chapter}{\numberline {第3章\hspace {.3em}}EPICS环境下基于POWERLINK的分布式IO系统}{35}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}主站PC方案的系统设计与开发}{35}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}系统架构设计}{35}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}EPICS设备驱动程序的开发}{35}{subsection.3.1.2}% 
+\contentsline {subsection}{\numberline {3.1.3}从站控制器的设计与开发}{37}{subsection.3.1.3}% 
+\contentsline {subsubsection}{\numberline {1}硬件介绍}{38}{subsubsection.3.1.3.1}% 
+\contentsline {subsubsection}{\numberline {2}软件设计}{41}{subsubsection.3.1.3.2}% 
+\contentsline {subsection}{\numberline {3.1.4}测试系统搭建}{43}{subsection.3.1.4}% 
+\contentsline {subsubsection}{\numberline {1}测试系统的硬件组成}{43}{subsubsection.3.1.4.1}% 
+\contentsline {subsubsection}{\numberline {2}测试系统的软件开发}{44}{subsubsection.3.1.4.2}% 
+\contentsline {subsection}{\numberline {3.1.5}系统性能测试与分析}{45}{subsection.3.1.5}% 
+\contentsline {subsubsection}{\numberline {1}系统通信周期测试}{45}{subsubsection.3.1.5.1}% 
+\contentsline {subsubsection}{\numberline {2}响应时间测试}{45}{subsubsection.3.1.5.2}% 
+\contentsline {subsubsection}{\numberline {3}测试小结}{49}{subsubsection.3.1.5.3}% 
+\contentsline {section}{\numberline {3.2}全站FPGA方案的系统设计与开发}{49}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}系统架构设计}{50}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}从站控制器的设计与开发}{50}{subsection.3.2.2}% 
+\contentsline {subsubsection}{\numberline {1}硬件介绍}{50}{subsubsection.3.2.2.1}% 
+\contentsline {subsubsection}{\numberline {2}软件设计}{52}{subsubsection.3.2.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}EPICS设备驱动程序的开发}{53}{subsection.3.2.3}% 
+\contentsline {subsection}{\numberline {3.2.4}测试系统搭建}{54}{subsection.3.2.4}% 
+\contentsline {subsection}{\numberline {3.2.5}系统性能测试与分析}{55}{subsection.3.2.5}% 
+\contentsline {subsubsection}{\numberline {1}通信周期测试}{55}{subsubsection.3.2.5.1}% 
+\contentsline {subsubsection}{\numberline {2}响应时间测试}{56}{subsubsection.3.2.5.2}% 
+\contentsline {subsubsection}{\numberline {3}测试小结}{58}{subsubsection.3.2.5.3}% 
+\contentsline {section}{\numberline {3.3}全站FPGA方案通信周期的理论计算}{59}{section.3.3}% 
+\contentsline {section}{\numberline {3.4}全站FPGA方案的仿真模拟}{62}{section.3.4}% 
+\contentsline {chapter}{\numberline {第4章\hspace {.3em}}HALF设备保护系统的设计}{64}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}HALF预研工程}{64}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}加速器中的设备保护系统}{65}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}设备保护系统的任务}{65}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}国内外加速器的机器保护系统调研}{66}{subsection.4.2.2}% 
+\contentsline {subsubsection}{\numberline {1}LCLS的机器保护系统}{66}{subsubsection.4.2.2.1}% 
+\contentsline {subsubsection}{\numberline {2}RAON的机器联锁保护系统}{67}{subsubsection.4.2.2.2}% 
+\contentsline {subsubsection}{\numberline {3}上海光源储存环的机器保护系统}{67}{subsubsection.4.2.2.3}% 
+\contentsline {subsubsection}{\numberline {4}CSNS漂移管直线加速器水冷联锁系统}{68}{subsubsection.4.2.2.4}% 
+\contentsline {subsubsection}{\numberline {5}调研总结}{69}{subsubsection.4.2.2.5}% 
+\contentsline {section}{\numberline {4.3}HALF设备保护系统设计}{70}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}HALF设备保护系统任务}{70}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}HALF设备保护系统设计原则}{71}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}HALF设备保护系统运行模式}{71}{subsection.4.3.3}% 
+\contentsline {subsection}{\numberline {4.3.4}HALF设备保护系统总体结构}{71}{subsection.4.3.4}% 
+\contentsline {subsection}{\numberline {4.3.5}联锁输入信号的预处理}{73}{subsection.4.3.5}% 
+\contentsline {section}{\numberline {4.4}注入器EPS设计}{74}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}电子枪联锁系统}{76}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}真空联锁系统}{77}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.3}冷却水联锁系统}{79}{subsection.4.4.3}% 
+\contentsline {subsection}{\numberline {4.4.4}注入器分总体EPS联锁信号总结}{79}{subsection.4.4.4}% 
+\contentsline {subsection}{\numberline {4.4.5}注入器设备保护系统实时性能评估}{80}{subsection.4.4.5}% 
+\contentsline {subsubsection}{\numberline {1}理论计算}{81}{subsubsection.4.4.5.1}% 
+\contentsline {subsubsection}{\numberline {2}网络模拟}{82}{subsubsection.4.4.5.2}% 
+\contentsline {subsubsection}{\numberline {3}小结}{84}{subsubsection.4.4.5.3}% 
+\contentsline {section}{\numberline {4.5}储存环分总体EPS设计}{84}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}真空联锁系统}{85}{subsection.4.5.1}% 
+\contentsline {subsection}{\numberline {4.5.2}冷却水联锁系统}{87}{subsection.4.5.2}% 
+\contentsline {subsection}{\numberline {4.5.3}真空部件温度联锁系统}{88}{subsection.4.5.3}% 
+\contentsline {subsection}{\numberline {4.5.4}高频联锁系统}{89}{subsection.4.5.4}% 
+\contentsline {subsection}{\numberline {4.5.5}注入联锁系统}{91}{subsection.4.5.5}% 
+\contentsline {subsection}{\numberline {4.5.6}储存环分总体EPS联锁信号总结}{92}{subsection.4.5.6}% 
+\contentsline {subsection}{\numberline {4.5.7}储存环设备保护系统实时性能评估}{92}{subsection.4.5.7}% 
+\contentsline {subsubsection}{\numberline {1}理论计算}{92}{subsubsection.4.5.7.1}% 
+\contentsline {subsubsection}{\numberline {2}网络模拟}{94}{subsubsection.4.5.7.2}% 
+\contentsline {subsubsection}{\numberline {3}小结}{96}{subsubsection.4.5.7.3}% 
+\contentsline {section}{\numberline {4.6}HALF设备保护系统的信息报警}{97}{section.4.6}% 
+\contentsline {section}{\numberline {4.7}HALF设备保护系统的历史数据存档与查询}{98}{section.4.7}% 
+\contentsline {chapter}{\numberline {第5章\hspace {.3em}}总结与展望}{100}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}总结}{100}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}展望}{101}{section.5.2}% 
+\contentsline {chapter}{参考文献}{103}{chapter*.96}% 
+\contentsline {chapter}{补充材料}{108}{appendix*.97}% 
+\contentsline {chapter}{致谢}{109}{appendix*.98}% 
+\contentsline {chapter}{在读期间发表的学术论文与取得的研究成果}{110}{appendix*.99}% 
+\contentsfinish 
