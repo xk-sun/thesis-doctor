@@ -1,19 +1,35 @@
 % !TeX root = ../main.tex
 
 \ustcsetup{
-  keywords = {
-  
-  },
-  keywords* = {
+  keywords = {实时以太网；Ethernet POWERLINK；EPICS；FPGA；设备保护系统
+
+	},
+  keywords* = {Real-time Ethernet；Ethernet POWERLINK；EPICS；FPGA；Equipment Protection System
 
   },
 }
 
 \begin{abstract}
 
+加速器控制系统一般是基于网络的分布式控制系统，遵循所谓的“标准模型”（Standard Models），由三部分组成：the Operator Interface、Data Communication、the Front-end Computers。数据通信在加速器控制系统中起着纽带的作用。随着加速器规模的增大和复杂度的提高，对数据通信性能的要求越来越高，而实时性是影响控制系统的关键因素，开展这方面的应用研究具有非常重要的工程应用价值。Ethernet POWERLINK（简称POWERLINK）作为一种开源实时以太网技术已广泛应用于工业控制领域，特别是有高实时性需求的场合，例如高性能的同步运动控制应用，但是在加速器控制领域，与POWERLINK相关的研究和应用还很少。EPICS作为加速器控制领域中应用最广泛的开发平台，目前还未见与POWERLINK相关的应用与研究。本论文将POWERLINK实时以太网技术和EPICS结合起来，开展了一系列的应用研究工作。
+
+首先对POWERLINK通信协议进行了分析和性能测试。基于POWERLINK协议栈的开源实现版本openPOWERLINK，我们分别搭建了基于RT-Linux PC和FPGA软核的两套测试系统。采用网络分析仪netANALYZER和Wireshark软件抓取并分析了POWERLINK数据帧，掌握了POWERLINK协议的数据帧结构和通信机制，并测试了两套系统的通信周期。我们还根据测试系统的实测通信参数，发展了理论计算和仿真建模两种方法来估算POWERLINK系统的通信周期。
+
+其次设计了EPICS环境下基于千兆POWERLINK的分布式IO系统。系统从站采用基于Zynq的控制器，主站是一台RT-Linux PC，PC上运行了IOC应用程序和内核空间下的openPOWERLINK主站程序，基于进程间Socket通信开发了相应的EPICS设备驱动程序。我们搭建了1个主站和10个从站组成的测试系统，测试系统的通信周期最快可到275$\mu$s，控制器本地响应时间约为400$\mu$s，系统全局响应时间为870$\mu$s。通过对系统测试结果的分析，发现从站的光耦延时和主站响应延时是影响系统性能的主要因素。针对这两点，我们设计了相应的改进方案，改进方案的主从站均采用Zynq控制器来实现，从站控制器的输入/输出接口电路采用ADuM1400高速数字隔离器。基于改进方案我们搭建了由1个主站和5个从站组成的测试系统，系统的通信周期最快可到50$\mu$s，从站的本地响应时间为5$\mu$s，系统全局响应时间为160$\mu$s，测试结果表明改进方案的实时性能明显得到了提升。根据改进方案的实测结果，我们进一步完善了理论计算和仿真建模方法，从而为POWERLINK的应用设计提供了依据。
+
+最后基于千兆POWERLINK设计了合肥先进光源设备保护系统（Hefei Advanced Light Facility Equipment Protection System，HALF EPS）。HALF是由国家同步辐射实验室提出的第四代基于衍射极限储存环的同步辐射光源，目前正在开展HALF预研工程建设。HALF EPS由注入器分总体EPS和储存环分总体EPS组成，各分总体EPS基于独立的千兆POWERLINK设计，联锁控制器采用Zynq控制器。我们对HALF EPS的联锁保护逻辑进行了描述，统计了联锁信号的数量。通过理论计算和仿真建模两种方法估算了注入器EPS的响应时间分别为802.100$\mu$s和798.184$\mu$s，储存环EPS的响应时间分别为1.643ms和1.634ms，均满足10ms响应时间的设计指标。最后基于Archive Appliance设计了HALF EPS的历史数据存档与查询系统，基于Phoebus/Alarms设计了HALF EPS报警系统。
+
+
 \end{abstract}
 
 \begin{enabstract}
 
+The accelerator control system is generally a distributed control system based on network. It follows the "Standard Models" and consists of three parts: operator interface, data communication, and front-end computer. Data communication is the bond in the accelerator control system. As the scale and complexity of accelerators increases, the requirements for data communication performance become higher and higher. Real-time performance is the key factor affecting accelerator control system，carrying out research on real-time application has very important engineering application value. As an open source real-time Ethernet technology, Ethernet POWERLINK（referred as to POWERLINK）has been widely used in the field of industrial control, especially in some occasions with high real-time requirements, such as high-performance synchronous motion control applications, currently there is little research on POWERLINK application in the field of accelerator control. EPICS is the most widely used development tool in the field of accelerator control, currently there is no POWERLINK application in the EPICS control system. This thesis integrates POWERLINK real-time ethernet technology with EPICS environment to carry out a series of research on POWERLINK application.
+
+Firstly, this thesis analyzes and tests the POWERLINK communication protocol. openPOWERLINK is the open source implementation of the POWERLINK protocol stack. Based on openPOWERLINK, two sets of test systems based on RT-Linux PC and FPGA soft core are built. POWERLINK data frames are captured and analyzed using the network analyzer netANALYZER and Wireshark software. The data frame structure and communication mechanism of the POWERLINK protocol are grasped, the communication cycle time of the two systems is tested. Based on the measured communication parameters of the test system, two methods of theoretical calculation and model simulation are developed to estimate the communication cycle time of the POWERLINK system.
+
+Secondly, a distributed IO system based on Gigabit POWERLINK under EPICS environment is designed. The slave nodes of the system use the Zynq-based controller. The master node is an RT-Linux PC. The PC runs the IOC application and the openPOWERLINK master node program in the kernel space. The corresponding EPICS device driver is developed based on Inter-process Socket communication. We build a test system composed of a master node and 10 slave nodes, the shortest communication cycle time of the test system is 275$\mu$s, the local response time of the slave node is about 400$\mu$s, and the global response time of the system is 870$\mu$s. Through the analysis of the test results, the optical coupler delay of the slave node and the response delay of the master node are the main factor affecting the system performance. For these two points, an upgraded design is proposed. The master and slave nodes of the upgraded design all use Zynq-based controllers, and the input/output interface of the slave nodes uses the ADuM1400 high-speed digital isolator. We build a test system composed of 1 master node and 5 slave nodes based on the upgraded design, the shortest communication cycle time of the system is 50$\mu$s, the local response time of the slave node is about 5$\mu$s, and the global response time of the system is 160$\mu$s. The test results show that the real-time performance of the upgraded design has been significantly increased. According to the measurement results of the upgraded design, the theoretical calculation and model simulation methods are further improved to provide a basis for the design of POWERLINK application.
+
+Finally, Hefei Advanced Light Facility Equipment Protection Sytem (HALF EPS) is designed based on Gigabit POWERLINK. HALF is the fourth generation of synchrotron radiation source based on diffraction limit storage ring, it is proposed by the National Synchrotron Radiation Laborary, the HALF pre-research project is in process. The HALF EPS is composed of an injector EPS and a storage ring EPS. The injector EPS and the storage ring EPS is designed by independent Gigabit POWERLINK, and the interlock controller use the Zynq-based controller. We describe the interlock protection logic of HALF EPS and count the number of interlock signals. Through theoretical calculation and model simulation, the response time of the injector EPS is estimated to be 802.100 $\mu$s and 798.184 $\mu$s, the response time of the storage ring EPS is estimated to be 1.643ms and 1.634ms. Both meet the 10ms design requirment of response time. Finally, the historical data archiving and query system of HALF EPS is designed based on Archive Appliance, and the HALF EPS alarm system is designed based on Phoebus/Alarms.
 
 \end{enabstract}
