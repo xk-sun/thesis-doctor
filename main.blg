@@ -1,0 +1,87 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: ustcthesis-numerical.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: bib/ustc.bib
+Warning--I'm ignoring NSLS-II-FOFB's extra "author" field
+--line 495 of file bib/ustc.bib
+Warning--I'm ignoring NSLS-II-FOFB's extra "booktitle" field
+--line 498 of file bib/ustc.bib
+Warning--empty year in EPICS
+Warning--empty year in ESPG
+Warning--empty year in oplk
+Warning--empty year in Alba-eps
+Warning--empty year in TANGO
+Warning--empty year in DOOCS
+Warning--empty year in openCONFIGURATOR
+Warning--empty year in wallner
+Warning--empty year in omnet
+Warning--empty year in zynq-7000
+Warning--empty year in alh
+Warning--empty year in aa-homepage
+Warning--empty author in EPICS
+Warning--empty booktitle in Aghababyan2015
+Warning--empty author in ESPG
+Warning--empty author in oplk
+Warning--empty journal in Wang2011
+Warning--empty year in Alba-eps
+Warning--empty year in Alba-eps
+Warning--empty author in TANGO
+Warning--empty author in DOOCS
+Warning--empty author and editor in powerlink
+Warning--empty author in openCONFIGURATOR
+Warning--empty year in wallner
+Warning--empty year in wallner
+Warning--empty author and editor in omnet
+Warning--empty year in omnet
+Warning--empty year in omnet
+Warning--empty author in zynq-7000
+Warning--empty author in jparc
+Warning--empty author and editor in alh
+Warning--empty year in alh
+Warning--empty year in alh
+Warning--empty author in aa-homepage
+You've used 75 entries,
+            4079 wiz_defined-function locations,
+            1299 strings with 18997 characters,
+and the built_in function-call counts, 355524 in all, are:
+= -- 8320
+> -- 39710
+< -- 50132
++ -- 14809
+- -- 3510
+* -- 3029
+:= -- 51481
+add.period$ -- 223
+call.type$ -- 75
+change.case$ -- 217
+chr.to.int$ -- 13147
+cite$ -- 121
+duplicate$ -- 1606
+empty$ -- 5084
+format.name$ -- 1208
+if$ -- 90019
+int.to.chr$ -- 1
+int.to.str$ -- 76
+missing$ -- 0
+newline$ -- 412
+num.names$ -- 189
+pop$ -- 13595
+preamble$ -- 1
+purify$ -- 75
+quote$ -- 0
+skip$ -- 35633
+stack$ -- 0
+substring$ -- 18831
+swap$ -- 200
+text.length$ -- 803
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 875
+warning$ -- 34
+while$ -- 1040
+width$ -- 0
+write$ -- 1068
+(There were 36 warnings)
