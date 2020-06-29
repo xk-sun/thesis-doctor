@@ -253,7 +253,7 @@ void syncCb(void)
 
 (3) 处理结果通过AXI总线写入相应的外部RAM中并通过GPIO输出信号。
 
-我们将1号从站控制器的输入和输出信号连接到示波器上，以输入和输出信号的上升沿时间差来表示本地响应时间。测试结果如图~\ref{fig:design1-local-response-time}所示，Ch1（黑线）代表1号从站控制器的输入信号； Ch2（青色线）代表1号从站控制器的输出信号，响应时间约为400$\mu$s。这个时间延迟包括从站控制器输入/输出接口电路中的光电耦合器的延时和ARM读取处理数据的时间。由于ARM的时钟频率为125MHz，AXI总线传输的数据宽度为32bit，所以运行在ARM上的应用层程序通过AXI总线读取处理数据的时间不到1$\mu$s，所以本地响应时间主要是光电耦合器导致的延时。
+我们将1号从站控制器的输入和输出信号连接到示波器上，以输入和输出信号的上升沿时间差来表示本地响应时间。测试结果如图~\ref{fig:design1-local-response-time}所示，Ch1（黑线）代表1号从站控制器的输入信号； Ch2（青色线）代表1号从站控制器的输出信号，响应时间约为400$\mu$s。这个时间延迟包括从站控制器输入/输出接口电路中的光电耦合器的延时和ARM读取处理数据的时间。由于ARM的时钟频率为667MHz，AXI总线传输的数据宽度为32bit，所以运行在ARM上的应用层程序通过AXI总线读取处理数据的时间不到在$\mu$s量级，所以本地响应时间主要是光电耦合器导致的延时。
 
 \begin{figure}[!htb]
 	\centering
@@ -321,21 +321,14 @@ T_{CN-process}=T_{coupler}+T_{wait}
 
 \subsubsection{硬件介绍}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.7\textwidth]{design2-zynq-board-photo.png}
-  \caption{从站控制器电路板照片}
+\begin{figure}[htb]\centering
+  \includegraphics[width=0.45\textwidth]{design2-zynq-board-photo.png}  
+  \includegraphics[width=0.35\textwidth]{di-expansion-board.png}
+  \caption{从站控制器电路板照片（左图）和从站控制器DI扩展板照片（右图）}
   \label{fig:design2-zynq-board-photo}
 \end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.4\textwidth]{di-expansion-board.png}
-  \caption{从站控制器DI扩展板照片}
-  \label{fig:di-expansion-board}
-\end{figure}
-
-全站FPGA方案中的主站控制器的硬件选型与设计和主站PC方案从站控制器基本相同，不同的是主站控制器增加了一个千兆以太网口，用于与IOC应用程序通信，具体可以参见第~\ref{subsection:前端控制器的设计与开发}节中硬件介绍部分，在此不再赘述。从站控制器采用主板、DI扩展板和背板相结合的方式来实现，主板和DI扩展板为独立板卡，背板为母板，主板和DI扩展板均插接与背板上。图~\ref{fig:design2-zynq-board-photo}所示的是全站FPGA方案从站控制器主板实物，主板由核心板和底板组成，硬件设计与主站PC方案的从站控制器基本相同。不同的是，全站FPGA方案主板增加了背板扩展DI接口用于连接背板，主板输出接口电路采用了高速数字隔离器，数字隔离器的型号是ADuM1400。主板采用4选1数据选择器来扩展DI通道数量，数据选择器型号为SN54HC153。图~\ref{fig:di-expansion-board}所示的是DI扩展板实物，DI扩展板输入接口电路同样采用了ADuM1400数字隔离器，4块DI扩展板共提供了128路DI通道，这种设计更具实际应用价值。
+全站FPGA方案中的主站控制器的硬件选型与设计和主站PC方案从站控制器基本相同，不同的是主站控制器增加了一个千兆以太网口，用于与IOC应用程序通信，具体可以参见第~\ref{subsection:前端控制器的设计与开发}节中硬件介绍部分，在此不再赘述。从站控制器采用主板、DI扩展板和背板相结合的方式来实现，主板和DI扩展板为独立板卡，背板为母板，主板和DI扩展板均插接与背板上。图~\ref{fig:design2-zynq-board-photo}中左图所示的是全站FPGA方案从站控制器主板实物，主板由核心板和底板组成，硬件设计与主站PC方案的从站控制器基本相同。不同的是，全站FPGA方案主板增加了背板扩展DI接口用于连接背板，主板输出接口电路采用了高速数字隔离器，数字隔离器的型号是ADuM1400。主板采用4选1数据选择器来扩展DI通道数量，数据选择器型号为SN54HC153。图~\ref{fig:design2-zynq-board-photo}中右图所示的是DI扩展板实物，DI扩展板输入接口电路同样采用了ADuM1400数字隔离器，4块DI扩展板共提供了128路DI通道，这种设计更具实际应用价值。
 
 
 \subsubsection{软件设计}
@@ -410,7 +403,7 @@ IOC应用程序负责监控 POWERLINK网络中各从站状态，IOC应用程序�
   \label{fig:design2-cycle-time-density}
 \end{figure}
 
-全站FPGA方案的测试系统通信周期最快可配置为50$\mu$s，50$\mu$s通信周期下的通信过程如图~\ref{fig:design2-cycle-time-test}所示。我们抓取了超过20k个连续的POWERLINK数据帧，并将通信周期的概率密度分布绘制在图~\ref{fig:design2-cycle-time-density}中。该图显示大多数情况下的通信周期为50.024$\mu$s，少数情况为50.016$\mu$s和50.032$\mu$s，此结果是由基于Zynq的控制器和ProfiShark 1G以太网分析仪的125Mhz时钟频率引起的。通信周期周期的最大偏移仅为32$\mu$s，抖动非常小。
+全站FPGA方案的测试系统通信周期最快可配置为50$\mu$s，50$\mu$s通信周期下的通信过程如图~\ref{fig:design2-cycle-time-test}所示。我们抓取了超过20k个连续的POWERLINK数据帧，并将通信周期的概率密度分布绘制在图~\ref{fig:design2-cycle-time-density}中。该图显示大多数情况下的通信周期为50.024$\mu$s，少数情况为50.016$\mu$s和50.032$\mu$s，此结果是由ProfiShark 1G以太网分析仪的125Mhz时钟频率引起的。通信周期周期的最大偏移仅为32$\mu$s，抖动非常小。
 
 \subsubsection{响应时间测试}
 \label{subsubsection:全FPGA方案的响应时间测试}
@@ -424,7 +417,7 @@ IOC应用程序负责监控 POWERLINK网络中各从站状态，IOC应用程序�
 
 3.处理结果通过32bit并行总线写入相应的RAM中并通过GPIO输出信号。
 
-选择测试系统中的5号从站控制器进行了本地响应时间测量，同样以输入和输出信号的上升沿时间差来表示本地响应时间。测试结果如图~\ref{fig:design2-local-response-time}所示，Ch2（青色线）代表5号从站控制器的输入信号；Ch3（红色线）代表5号从站控制器的输出信号，响应时间为5$\mu$s。这个时间延迟包括从站控制器输入/输出接口电路中的数字隔离器的延时和ARM读取处理数据的时间。由于ARM的时钟频率为125MHz，ARM读取处理数据的时间仅在$\mu$s量级，所以本地响应时间主要是由从站控制器的数字隔离器造成的，较之主站PC方案中的光耦合器，型号为ADuM1400的数字隔离器大大提高了信号传输速率。
+选择测试系统中的5号从站控制器进行了本地响应时间测量，同样以输入和输出信号的上升沿时间差来表示本地响应时间。测试结果如图~\ref{fig:design2-local-response-time}所示，Ch2（青色线）代表5号从站控制器的输入信号；Ch3（红色线）代表5号从站控制器的输出信号，响应时间为5$\mu$s。这个时间延迟包括从站控制器输入/输出接口电路中的数字隔离器的延时和ARM读取处理数据的时间。由于ARM的时钟频率为667MHz，ARM读取处理数据的时间仅在$\mu$s量级，所以本地响应时间主要是由从站控制器的数字隔离器造成的，较之主站PC方案中的光耦合器，型号为ADuM1400的数字隔离器大大提高了信号传输速率。
 
 \begin{figure}[!htb]
   \centering
@@ -640,7 +633,7 @@ omnetpp.ini仿真配置文件包括了对系统通信周期、各从站节点号
 **.hubDelayMean = 0.661us
 \end{lstlisting}
 
-模拟过程持续了大约3000个POWERLINK通信周期。因为同步阶段和同步阶段时长为定值，所以我们统计了等时同步阶段的时长，并将等时同步阶段概率密度分布绘制在图~\ref{fig:iso-time-density-5cn-model}中。该图表明大多数情况下的等时同步阶段时长为37.203$\mu$s，最大抖动不超过30ns。实测的等时同步阶段时长平均值为36.312$\mu$s，较之实测值，仿真建模方法对轮询阶段时长的计算误差在1$\mu$s以内。1$\mu$s误差对于50$\mu$s的通信周期来说影响非常小，所以仿真模拟方法可以准确的估算轮询阶段的时长。考虑到同步过程（$T_{sync}$）在1$\mu$s以内可以完成以及12.920$\mu$s的空闲时间，通过仿真模拟得到的通信周期为51.120$\mu$s。
+模拟过程持续了大约3000个POWERLINK通信周期。因为同步阶段和同步阶段时长为定值，所以我们统计了等时同步阶段的时长，并将等时同步阶段概率密度分布绘制在图~\ref{fig:iso-time-density-5cn-model}中。该图表明大多数情况下的等时同步阶段时长为37.203$\mu$s，最大抖动不超过30ns。实测的等时同步阶段时长平均值为36.312$\mu$s，较之实测值，仿真建模方法对轮询阶段时长的计算误差在1$\mu$s以内，所以仿真模拟方法可以准确的估算轮询阶段的时长。考虑到同步过程（$T_{sync}$）在1$\mu$s以内可以完成以及12.920$\mu$s的空闲时间，通过仿真模拟得到的通信周期为51.120$\mu$s。
 
 \begin{figure}[!htb]
   \centering

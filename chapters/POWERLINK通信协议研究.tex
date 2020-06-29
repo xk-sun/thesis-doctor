@@ -117,7 +117,7 @@ POWERLINK的应用层遵循CANOpen标准，其核心是对象字典（OBD）\cit
 
 \section{POWERLINK协议的实现}
 \label{POWERLINK协议的实现}
-POWERLINK协议可以在多种平台上实现，本章重点研究POWERLINK协议实现方案openPOWERLINK。openPOWERLINK是由德国SYSTEC电子、B$\&$R自动化和Kalycito公司联合开发并维护的开源POWERLINK协议栈，在遵循BSD许可证的前提下，用户可以在 \url{https://sourceforge.net/projects/openpowerlink/} 免费获取。openPOWERLINK作为一种纯软件实现方案，实现了POWERLINK协议栈的所有重要功能，例如标准的轮询通信模式，动态和静态PDO映射，通过ASnd异步数据帧传输的SDO，以及通过虚拟以太网接口实现的异步通信\cite{oplk}。openPOWERLINK的软件结构分为三层，分别是用户应用层、通信抽象层和底层协议栈层，用户应用层和底层协议栈层分别对应POWERLINK协议的应用层和数据链路层，通信抽象层采用共享缓存区的方式连接应用层和协议栈层。openPOWERLINK支持Intel X86、FPGA等多种硬件平台和Linux、Windows等操作系统，本章研究openPOWERLINK在Linux系统下和FPGA平台上的实现，并进行了性能测试。
+POWERLINK协议可以在多种平台上实现，本章重点研究POWERLINK协议实现方案openPOWERLINK。openPOWERLINK是由德国SYSTEC电子、B$\&$R自动化和Kalycito公司联合开发并维护的开源POWERLINK协议栈，在遵循BSD许可证的前提下，用户可以在开源项目平台上\cite{downoplk}免费获取。openPOWERLINK作为一种纯软件实现方案，实现了POWERLINK协议栈的所有重要功能，例如标准的轮询通信模式，动态和静态PDO映射，通过ASnd异步数据帧传输的SDO，以及通过虚拟以太网接口实现的异步通信\cite{oplk}。openPOWERLINK的软件结构分为三层，分别是用户应用层、通信抽象层和底层协议栈层，用户应用层和底层协议栈层分别对应POWERLINK协议的应用层和数据链路层，通信抽象层采用共享缓存区的方式连接应用层和协议栈层。openPOWERLINK支持Intel X86、FPGA等多种硬件平台和Linux、Windows等操作系统，本章研究openPOWERLINK在Linux系统下和FPGA平台上的实现，并进行了性能测试。
 
 在组建POWERLINK网络之前，需要进行网络配置。openCONFIGURATOR是一个开源网络配置工具\cite{openCONFIGURATOR}，可以方便快速地组建一个POWERLINK网络、轻松地配置各个节点的网络参数和映射参数。图~\ref{fig:openconfigurator}为openCONFIGURATOR的主界面，我们可以进行通信周期的配置以及各从站的通信参数配置。openCONFIGURATOR的输出文件主要是后缀名.cdc的网络配置文件.cdc文件是一个二进制文件，保存了整个网络的配置信息。主站会读取cdc文件并根据cdc文件来配置循环周期、主站以及各个从站的网络参数和映射参数。
 
@@ -274,7 +274,7 @@ demo_mn_console  mnobd.cdc  mnobd.cdc-bk  set_prio
   \label{fig:de2-115-test-arch}
 \end{figure}
 
-对于POWERLINK测试系统，我们采用Hilscher netAnalyzer以太网分析仪用来抓取POWERLINK数据帧。以太网分析仪netANALYZER是用于对实时以太网传输数据进行监控和分析的工具，由德国赫优讯公司生产。Hilscher netANALYZER由于其内置的ASIC专用芯片，测量分辨率可达到10ns，可以用来测量各种高精度时间同步协议，如：IEEE1588、PROFINET IRT、EtherNet/IP 集成CIP Sync、EtherCAT或 Sercos、POWERLINK。Hilscher netANALYZER在硬件上集成的测试访问点Tap，保证了测试过程中以太网通信不会受到影响，既不会带来额外的数据帧延时，也不影响时间抖动。测试访问点Tap还保证了即使在错误状态下数据内容也不会被改变。网络上发生的所有报文数据及报文错误都毫无改变地传输至现场设备。如图~\ref{fig:netANALYZER-photo}所示的以太网分析仪netANALYZER包含5个以太网端口，其中2个“Tap”端口组成“TapA”，2个“Tap”端口组成“TapB”，可以同时抓取2条通信网络上的数据帧。另一个端口作为“镜像端口”负责接收来自TapA/TapB端口上的转发数据，同时“镜像端口”负责将数据传输至与PC，PC上运行了专用软件netANALYZER Scope2，支持将抓包结果输出为可被Wireshark解析的pcap格式文件，从而可以进行更详细的分析。这里我们仅用到了“TapA”端口进行POWERLINK通信测试。
+对于POWERLINK测试系统，我们采用Hilscher netAnalyzer以太网分析仪来抓取POWERLINK数据帧。以太网分析仪netANALYZER是用于对实时以太网传输数据进行监控和分析的工具，由德国赫优讯公司生产。Hilscher netANALYZER由于其内置的ASIC专用芯片，测量分辨率可达到10ns，可以用来测量各种高精度时间同步协议，如：IEEE1588、PROFINET IRT、EtherNet/IP 集成CIP Sync、EtherCAT或 Sercos、POWERLINK。Hilscher netANALYZER在硬件上集成的测试访问点Tap，保证了测试过程中以太网通信不会受到影响，既不会带来额外的数据帧延时，也不影响时间抖动。测试访问点Tap还保证了即使在错误状态下数据内容也不会被改变。网络上发生的所有报文数据及报文错误都毫无改变地传输至现场设备。如图~\ref{fig:netANALYZER-photo}所示的以太网分析仪netANALYZER包含5个以太网端口，其中2个“Tap”端口组成“TapA”，2个“Tap”端口组成“TapB”，可以同时抓取2条通信网络上的数据帧。另一个端口作为“镜像端口”负责接收来自TapA/TapB端口上的转发数据，同时“镜像端口”负责将数据传输至与PC，PC上运行了专用软件netANALYZER Scope2，支持将抓包结果输出为可被Wireshark解析的pcap格式文件，从而可以进行更详细的分析。这里我们仅用到了“TapA”端口进行POWERLINK通信测试。
 
 \begin{figure}[htb]\centering
   \includegraphics[width=.452\textwidth]{netANALYZER_1.png}  
@@ -292,7 +292,7 @@ demo_mn_console  mnobd.cdc  mnobd.cdc-bk  set_prio
   \label{fig:de2-115-photo}
 \end{figure}
 
-基于此系统，我们进行了通信周期和响应时间的性能测试。经过多次测试，该系统可以在700$\mu$s的通信周期下的稳定运行，Hilscher netAnalyzer以太网分析仪的抓包结果如图~\ref{fig:de2-115-wireshark}所示。我们测试了大约27000个连续的POWERLINK通信周期，循环周期的平均值约为703$\mu$s。图~\ref{fig:de2-115-density}是python程序拟合的通信周期的概率密度分布曲线，密度的峰值在通信周期为700$\mu$s附近，但是抖动较大。
+基于此系统，我们进行了通信周期和响应时间的性能测试。经过多次测试，该系统可以在700$\mu$s的通信周期下稳定运行，Hilscher netAnalyzer以太网分析仪的抓包结果如图~\ref{fig:de2-115-wireshark}所示。我们测试了大约27000个连续的POWERLINK通信周期，循环周期的平均值约为703$\mu$s。图~\ref{fig:de2-115-density}是python程序拟合的通信周期的概率密度分布曲线，密度的峰值在通信周期为700$\mu$s附近，但是抖动较大。
 
 \begin{figure}[!htb]
   \centering

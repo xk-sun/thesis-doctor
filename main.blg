@@ -9,6 +9,7 @@ Warning--I'm ignoring NSLS-II-FOFB's extra "author" field
 --line 495 of file bib/ustc.bib
 Warning--I'm ignoring NSLS-II-FOFB's extra "booktitle" field
 --line 498 of file bib/ustc.bib
+Warning--I didn't find a database entry for "downoplk"
 Warning--empty year in EPICS
 Warning--empty year in ESPG
 Warning--empty year in oplk
@@ -45,7 +46,7 @@ Warning--empty year in alh
 Warning--empty author in aa-homepage
 You've used 75 entries,
             4079 wiz_defined-function locations,
-            1299 strings with 18997 characters,
+            1300 strings with 19005 characters,
 and the built_in function-call counts, 355524 in all, are:
 = -- 8320
 > -- 39710
@@ -84,4 +85,4 @@ warning$ -- 34
 while$ -- 1040
 width$ -- 0
 write$ -- 1068
-(There were 36 warnings)
+(There were 37 warnings)
